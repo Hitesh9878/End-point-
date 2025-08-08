@@ -1,9 +1,0 @@
-{
-  "name": "call-status-api",
-  "version": "1.0.0",
-  "type": "module",
-  "dependencies": {
-    "express": "latest",
-    "serverless-http": "latest"
-  }
-}
