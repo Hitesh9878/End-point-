@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/call-status.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/call-status",
+      "methods": ["POST", "GET"],
+      "dest": "api/call-status.js"
+    }
+  ]
+}

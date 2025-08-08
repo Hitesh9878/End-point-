@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Call Logs Viewer</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; }
+    h1 { margin-bottom: 1rem; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: left; }
+    th { background-color: #f2f2f2; }
+  </style>
+</head>
+<body>
+  <h1>Call Logs</h1>
+  <table id="callLogsTable">
+    <thead>
+      <tr>
+        <th>CallSid</th>
+        <th>Status</th>
+        <th>RecordingUrl</th>
+        <th>DateUpdated</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    async function loadLogs() {
+      const res = await fetch('/api/call-status');
+      const logs = await res.json();
+      const tbody = document.querySelector('#callLogsTable tbody');
+      logs.forEach(log => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${log.CallSid}</td>
+          <td>${log.Status}</td>
+          <td><a href="${log.RecordingUrl}" target="_blank">${log.RecordingUrl || '-'}</a></td>
+          <td>${log.DateUpdated}</td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+    loadLogs();
+  </script>
+</body>
+</html>
