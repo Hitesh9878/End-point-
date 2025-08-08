@@ -1,0 +1,12 @@
+{
+  "name": "call-status-api",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "api/call-status.js",
+  "scripts": {
+    "start": "node api/call-status.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
